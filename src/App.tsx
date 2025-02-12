@@ -15,6 +15,11 @@ function App() {
     <main className="bg-slate-600 h-screen w-screen">
       <div className="flex justify-center items-center h-full">
         <h1 className="text-4xl text-slate-200 font-bold">Hello</h1>
+        <button className="btn btn-xs">Xsmall</button>
+        <button className="btn btn-sm">Small</button>
+        <button className="btn">Medium</button>
+        <button className="btn btn-lg">Large</button>
+        <button className="btn btn-xl">Xlarge</button>
       </div>
     </main>
   );
