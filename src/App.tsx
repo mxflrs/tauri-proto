@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import "./App.css";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -11,18 +11,7 @@ function App() {
     setGreetMsg(await invoke("greet", { name }));
   }
 
-  return (
-    <main className="bg-slate-600 h-screen w-screen">
-      <div className="flex justify-center items-center h-full">
-        <h1 className="text-4xl text-slate-200 font-bold">Hello</h1>
-        <button className="btn btn-xs">Xsmall</button>
-        <button className="btn btn-sm">Small</button>
-        <button className="btn">Medium</button>
-        <button className="btn btn-lg">Large</button>
-        <button className="btn btn-xl">Xlarge</button>
-      </div>
-    </main>
-  );
+  return <Outlet />
 }
 
 export default App;
