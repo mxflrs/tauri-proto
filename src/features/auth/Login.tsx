@@ -18,7 +18,7 @@ export default function Login() {
         </fieldset>
 
         <p className="text-xs pt-6 pb-2">¿No tienes una cuenta? <Link to="/register" className="hover:underline hover:underline-offset-8">Regístrate.</Link></p>
-        <button className="btn btn-accent mt-2 text-sm" type="button">Ingresar</button>
+        <Link to="/users" className="btn btn-accent mt-2 text-sm" type="button">Ingresar</Link>
       </div>
     </main>
   );
