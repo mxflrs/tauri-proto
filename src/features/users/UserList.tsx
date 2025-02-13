@@ -9,34 +9,92 @@ interface Employee {
 }
 
 export default function UserList() {
-  const [employees, setEmployees] = useState<Employee[]>([])
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data: Employee[] = await invoke('get_employees')
-        setEmployees(data)
-      } catch (err) {
-        setError(err as string)
-      }
-    }
-    fetchData()
-  }, [])
-
-  if (error) return <div>Error: {error}</div>
+  const data = [
+    {
+      id: 1,
+      villa: 'Villa Alba',
+      nombre: 'María García',
+      estado: 'Activo',
+      email: 'maria.garcia@example.com',
+      telefono: '+34 612 345 678'
+    },
+    {
+      id: 2,
+      villa: 'Villa Verde',
+      nombre: 'Carlos Martínez',
+      estado: 'Inactivo',
+      email: 'carlos.m@example.com',
+      telefono: '+34 699 876 543'
+    },
+    {
+      id: 3,
+      villa: 'Casa del Sol',
+      nombre: 'Ana López',
+      estado: 'Pendiente',
+      email: 'ana.lopez@example.com',
+      telefono: '+34 622 334 455'
+    },
+    {
+      id: 4,
+      villa: 'Villa Azul',
+      nombre: 'Juan Pérez',
+      estado: 'Activo',
+      email: 'juan.perez@example.com',
+      telefono: '+34 677 665 544'
+    },
+    {
+      id: 5,
+      villa: 'La Colina',
+      nombre: 'Laura Fernández',
+      estado: 'Inactivo',
+      email: 'laura.f@example.com',
+      telefono: '+34 611 223 344'
+    },
+  ];
 
   return (
-    <div className="p-8">
-      <h2 className="text-2xl font-bold mb-6">Registered Users</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {employees.map((user, i) => (
-          <div key={i} className="p-4 border rounded-lg shadow">
-            <h3 className="font-bold">{user.username}</h3>
-            <p>{user.email}</p>
-          </div>
-        ))}
-      </div>
+    <div className="overflow-x-auto">
+      <table className="table">
+        {/* head */}
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Villa</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.villa}</td>
+              <td>{item.nombre}</td>
+              <td>
+                <span className={`badge ${item.estado === 'Activo' ? 'badge-success' :
+                  item.estado === 'Inactivo' ? 'badge-error' : 'badge-warning'}`}>
+                  {item.estado}
+                </span>
+              </td>
+              <td>{item.email}</td>
+              <td>{item.telefono}</td>
+              <td>
+                <div className="flex gap-2">
+                  <button className="btn btn-ghost btn-xs">
+                    {/* <PencilIcon className="h-4 w-4" /> */}
+                  </button>
+                  <button className="btn btn-ghost btn-xs text-error">
+                    {/* <TrashIcon className="h-4 w-4" /> */}
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

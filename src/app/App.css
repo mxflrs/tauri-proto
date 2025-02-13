@@ -37,3 +37,6 @@
     --noise: 0;
   }
   
+  th, td, span {
+    font-size: 0.7rem;
+  }

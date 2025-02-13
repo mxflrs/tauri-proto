@@ -3,7 +3,7 @@ import SplashScreen from "./shared/components/SplashScreen";
 import Login from "./features/auth/Login";
 import React from "react";
 import Register from "./features/auth/Register";
-import UserList from "./features/users/UserList";
+import Users from "./features/users/Users";
 
 
 export const router = createBrowserRouter([
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/users",
-    element: <UserList />
+    element: <Users />
   }
   //   {
   //     path: "/dashboard",
